@@ -49,6 +49,7 @@ class VocabularyController extends Controller
     public function edit(Vocabulary $vocabulary)
     {
         $this->authorize('update', $vocabulary);
+
         return view('vocabulary.edit', ['vocabulary' => $vocabulary]);
     }
 
@@ -61,6 +62,7 @@ class VocabularyController extends Controller
             'definition' => ['required', 'min:2']
         ]);
         $vocabulary->update($payload);
+
         return redirect(route('vocabulary.index'));
     }
 
@@ -70,8 +72,17 @@ class VocabularyController extends Controller
             ->orderByRaw('rand()')
             ->limit(1)
             ->first();
+
         return view('vocabulary.random', [
             'vocabulary' => $vocabulary
         ]);
+    }
+
+    public function destroy(Vocabulary $vocabulary)
+    {
+        $this->authorize('delete', $vocabulary);
+        $vocabulary->delete();
+
+        return redirect(route('vocabulary.index'));
     }
 }

@@ -19,8 +19,13 @@
             <tbody>
                 @foreach($vocabularies as $vocabulary)
                     <tr>
-                        <td>
-                            <a href="{{route('vocabulary.edit', ['vocabulary' => $vocabulary->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+                        <td class="d-flex">
+                            <a class="btn btn-link" href="{{route('vocabulary.edit', ['vocabulary' => $vocabulary->id])}}"><i class="far fa-edit"></i></a>
+                            <form method="POST" action="{{ route('vocabulary.delete', ['vocabulary' => $vocabulary->id])}}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-link" href="#" style="color:red;"><i class="far fa-trash-alt"></i></button>
+                            </form>
                         </td>
                         <td>{{ $vocabulary->word }}</td>
                         <td>{!! nl2br(e($vocabulary->definition)) !!}</td>

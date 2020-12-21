@@ -26,3 +26,4 @@ Route::post('/vocabulary', [VocabularyController::class, 'store'])->name('vocabu
 Route::get('/vocabulary/{vocabulary}/edit', [VocabularyController::class, 'edit'])->name('vocabulary.edit');
 Route::put('/vocabulary/{vocabulary}', [VocabularyController::class, 'update'])->name('vocabulary.update');
 Route::get('/vocabulary/random', [VocabularyController::class, 'random'])->name('vocabulary.random');
+Route::delete('/vocabulary/{vocabulary}', [VocabularyController::class, 'destroy'])->name('vocabulary.delete');
