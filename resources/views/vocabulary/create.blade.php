@@ -13,7 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="definition">Definition</label>
-                <textarea name="definition" id="definition" class="form-control @error('definition') is-invalid @enderror">{{ old('definition') }}</textarea>
+                <textarea name="definition" id="definition" rows="10" class="form-control @error('definition') is-invalid @enderror">{{ old('definition') }}</textarea>
                 @error('definition')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

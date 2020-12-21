@@ -48,11 +48,14 @@ class VocabularyController extends Controller
 
     public function edit(Vocabulary $vocabulary)
     {
+        $this->authorize('update', $vocabulary);
         return view('vocabulary.edit', ['vocabulary' => $vocabulary]);
     }
 
     public function update(Request $request, Vocabulary $vocabulary)
     {
+        $this->authorize('update', $vocabulary);
+
         $payload = $request->validate([
             'word' => ['required', 'max:255', 'min:2'],
             'definition' => ['required', 'min:2']
