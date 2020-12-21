@@ -3,22 +3,46 @@
 @foreach($vocabularies as $vocabulary)
 - {{ $vocabulary->word }}
 @endforeach
--
--
--
--
--
--
--
--
--
--
-@component('mail::table')
-| word          | definition    |
-| ------------- |:-------------:|
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 @foreach($vocabularies as $vocabulary)
-| {{$vocabulary->word}} | {{$vocabulary->definition}} |
+    {{ $vocabulary->word }}
+    @component('mail::panel')
+        {!! nl2br(e($vocabulary->definition)) !!}
+    @endcomponent
 @endforeach
-@endcomponent
 
 @endcomponent

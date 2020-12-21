@@ -23,7 +23,7 @@
                             <a href="{{route('vocabulary.edit', ['vocabulary' => $vocabulary->id])}}"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
                         </td>
                         <td>{{ $vocabulary->word }}</td>
-                        <td>{{ $vocabulary->definition }}</td>
+                        <td>{!! nl2br(e($vocabulary->definition)) !!}</td>
                     </tr>
                 @endforeach
             </tbody>

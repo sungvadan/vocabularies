@@ -35,7 +35,7 @@ class RandomWord extends Mailable
      */
     public function build()
     {
-        return $this->from('random-word@laravel.com')
+        return $this->from(config('mail.from.address'))
             ->markdown('email.vocabulary.random');
     }
 }
