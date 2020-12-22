@@ -16,7 +16,7 @@ class VocabularyController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $vocabularies = Vocabulary::where('user_id', $user->id)->paginate(10);
+        $vocabularies = Vocabulary::where('user_id', $user->id)->orderByRaw('rand()')->paginate(10);
 
         return view('vocabulary.index', [
             'vocabularies' => $vocabularies
