@@ -24,7 +24,7 @@
                             <form method="POST" action="{{ route('vocabulary.delete', ['vocabulary' => $vocabulary->id])}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-link" href="#" style="color:red;"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-link btn-delete" style="color:red;"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </td>
                         <td>{{ $vocabulary->word }}</td>
@@ -36,4 +36,16 @@
         {{ $vocabularies->onEachSide(2)->links() }}
 
     </div>
+@endsection
+
+@section('javascript')
+    document.querySelectorAll('.btn-delete').forEach(function (btnDelete) {
+        btnDelete.addEventListener('click', function (evt) {
+            evt.preventDefault()
+            const test = confirm("Do you really want to delete this word")
+            if (test) {
+                this.parentNode.submit()
+            }
+        })
+    })
 @endsection

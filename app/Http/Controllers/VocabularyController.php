@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Vocabulary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class VocabularyController extends Controller
 {
@@ -17,9 +16,7 @@ class VocabularyController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $vocabularies = DB::table('vocabularies')
-            ->where('user_id', '=', $user->id)
-            ->paginate(10);
+        $vocabularies = Vocabulary::where('user_id', $user->id)->paginate(10);
 
         return view('vocabulary.index', [
             'vocabularies' => $vocabularies
@@ -68,10 +65,8 @@ class VocabularyController extends Controller
 
     public function random()
     {
-        $vocabulary = DB::table('vocabularies')
-            ->orderByRaw('rand()')
-            ->limit(1)
-            ->first();
+        $user = Auth::user();
+        $vocabulary = Vocabulary::where('user_id', $user->id)->orderByRaw('rand()')->limit(1)->firstOrFail();
 
         return view('vocabulary.random', [
             'vocabulary' => $vocabulary
