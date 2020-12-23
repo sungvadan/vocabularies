@@ -39,10 +39,12 @@
 <br/>
 <br/>
 @foreach($vocabularies as $vocabulary)
-    {{ $vocabulary->word }}
-    @component('mail::panel')
-        {!! nl2br(e($vocabulary->definition)) !!}
-    @endcomponent
+{{ $vocabulary->word }}
+@component('mail::panel')
+{!! nl2br(e($vocabulary->definition)) !!}
+@endcomponent
+<br/>
+<br/>
 @endforeach
 
 @endcomponent
