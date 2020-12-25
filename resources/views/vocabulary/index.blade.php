@@ -33,8 +33,6 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $vocabularies->onEachSide(2)->links() }}
-
     </div>
 @endsection
 
