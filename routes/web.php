@@ -14,6 +14,10 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
+Route::get('/test', function() {
+   return view('markdown.index');
+});
+
 Route::get('/', [LoginController::class, 'showLoginForm']);
 
 Auth::routes();

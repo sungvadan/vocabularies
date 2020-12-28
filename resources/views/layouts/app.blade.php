@@ -79,7 +79,8 @@
             @yield('content')
         </main>
     </div>
-        <script type="text/javascript">
+
+    <script type="text/javascript" defer>
         @yield('javascript')
     </script>
 </body>
