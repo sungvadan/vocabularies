@@ -18,7 +18,6 @@ class RandomWord extends Mailable
      */
     public $vocabularies;
 
-    public $test = "dfd";
     /**
      * RandomWord constructor.
      * @param Vocabulary[] $vocabularies
