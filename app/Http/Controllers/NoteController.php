@@ -83,9 +83,10 @@ class NoteController extends Controller
     public function random(RandomNoteService $randomNoteService)
     {
         $user = Auth::user();
+        $parsedown = new \Parsedown();
 
         return view('note.random', [
-            'randoms' => $randomNoteService->getRandomNoteForUser($user)
+            'randoms' => $parsedown->parse($randomNoteService->getRandomNoteForUser($user))
         ]);
     }
 }

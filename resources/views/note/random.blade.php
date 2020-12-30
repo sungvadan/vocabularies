@@ -9,15 +9,11 @@
     <title>Note</title>
 </head>
 <body>
+
 <div class="container">
-        <div id="js-preview"></div>
-        <textarea id="body" class="hidden">{!! $randoms !!}</textarea>
+        <div id="js-preview"> {!! $randoms !!} </div>
 </div>
 
-<script type="application/javascript" src="{{asset('js/markdown.js')}}"></script>
-<script type="application/javascript">
-    document.getElementById('js-preview').innerHTML =  marked(document.getElementById('body').value);
-</script>
 </body>
 </html>
 
