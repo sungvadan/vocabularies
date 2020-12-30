@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="mb-3 float-left">
-            <a href="#" class="btn btn-primary">Learn</a>
+            <a href="{{ route('note.random') }}" class="btn btn-primary">Learn</a>
         </div>
         <div class="mb-3 float-right">
             <a href="{{ route('note.create') }}" class="btn btn-primary">Add note</a>

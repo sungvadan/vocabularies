@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Services\RandomNoteService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,15 +80,12 @@ class NoteController extends Controller
         return redirect(route('note.index'));
     }
 
-    public function random()
+    public function random(RandomNoteService $randomNoteService)
     {
         $user = Auth::user();
-        $note = Note::where('user_id', $user->id)->orderByRaw('rand()')->limit(1)->firstOrFail();
-        $matches = explode("##", $note->body);
-        ddd($matches);
 
-//        return view('vocabulary.random', [
-//            'vocabulary' => $vocabulary
-//        ]);
+        return view('note.random', [
+            'randoms' => $randomNoteService->getRandomNoteForUser($user)
+        ]);
     }
 }
