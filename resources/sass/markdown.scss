@@ -1,18 +1,6 @@
 @import "~codemirror/lib/codemirror.css";
 @import "~codemirror/theme/neo.css";
 
-* {
-    box-sizing: border-box;
-}
-
-.container {
-    width: 1024px;
-    margin: auto;
-
-    form {
-        margin-top: 15px;
-    }
-}
 
 #js-editor, #js-preview {
     background-color: #fff;
@@ -47,10 +35,6 @@
         border: 1px solid #f1f1f1;
         vertical-align: middle;
     }
-}
-
-.hidden {
-    display: none !important;
 }
 
 .alert-danger {
