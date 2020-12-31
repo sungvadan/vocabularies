@@ -6,7 +6,9 @@
 </head>
 <body>
 
-    <div id="js-preview"> {!! $randoms !!} </div>
+    <div style="background-color: #fff; border: 1px solid #000; padding: 5px; margin-top: 10px; margin-bottom: 10px; box-shadow: 0 1px 2px;">
+        {!! $randoms !!}
+    </div>
 
 </body>
 </html>
