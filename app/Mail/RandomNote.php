@@ -32,6 +32,7 @@ class RandomNote extends Mailable
         $view = str_replace('<table>', '<table style="margin-bottom: 1rem; width: 100%;">', $view);
         $view = str_replace('<td>', '<td style="padding: 7px 13px; border: 1px solid #f1f1f1; vertical-align: middle;">', $view);
         $view = str_replace('<th>', '<th style="padding: 7px 13px; border: 1px solid #f1f1f1; vertical-align: middle;">', $view);
+        $view = preg_replace('/<img ([^>]*)>/', '<img $1 width="760">', $view);
 
         return $this->html($view);
     }
