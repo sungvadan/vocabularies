@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,5 @@ Route::get('/note/{note}', [NoteController::class, 'show'])->name('note.show');
 Route::get('/note/{note}/edit', [NoteController::class, 'edit'])->name('note.edit');
 Route::put('/note/{note}', [NoteController::class, 'update'])->name('note.update');
 Route::delete('/note/{note}', [NoteController::class, 'destroy'])->name('note.delete');
+
+Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');
