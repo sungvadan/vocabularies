@@ -20,7 +20,7 @@ class RandomNoteService
                 $randoms = array_merge($randoms ,$matches);
             } else {
                 $chunk = [];
-                while(count($chunk) <= 3) {
+                while(count($chunk) < 3) {
                     $randomIndex = random_int(0 , count($matches) - 1);
                     if (!in_array($randomIndex, $chunk)) {
                         $chunk[] = $randomIndex;
