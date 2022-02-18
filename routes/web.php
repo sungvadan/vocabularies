@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MindNoteController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
@@ -38,5 +39,11 @@ Route::get('/note/{note}', [NoteController::class, 'show'])->name('note.show');
 Route::get('/note/{note}/edit', [NoteController::class, 'edit'])->name('note.edit');
 Route::put('/note/{note}', [NoteController::class, 'update'])->name('note.update');
 Route::delete('/note/{note}', [NoteController::class, 'destroy'])->name('note.delete');
+
+Route::get('/mind-note', [MindNoteController::class, 'index'])->name('mind_note.index');
+Route::get('/mind-note/create', [MindNoteController::class, 'create'])->name('mind_note.create');
+Route::post('/mind-note', [MindNoteController::class, 'store'])->name('mind_note.store');
+Route::get('/mind-note/{mindNote}', [MindNoteController::class, 'show'])->name('mind_note.show');
+Route::delete('/mind-note/{mindNote}', [MindNoteController::class, 'destroy'])->name('mind_note.delete');
 
 Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');

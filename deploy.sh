@@ -6,3 +6,4 @@ composer install --optimize-autoloader --no-dev &&
 ./artisan view:cache &&
 ./artisan route:cache &&
 ./artisan event:cache
+./artisan storage:link

@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('note.index') }}">Note</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('mind_note.index') }}">Mind Note</a>
+                    </li>
                 @endauth
             </ul>
 
