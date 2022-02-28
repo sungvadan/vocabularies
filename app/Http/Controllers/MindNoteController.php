@@ -60,6 +60,31 @@ class MindNoteController extends Controller
         return redirect(route('mind_note.index'));
     }
 
+    public function edit(MindNote $mindNote)
+    {
+        $this->authorize('update', $mindNote);
+        return view('mind_note.edit', ['mindNote' => $mindNote]);
+    }
+
+    public function update(Request $request, MindNote $mindNote)
+    {
+        $this->authorize('update', $mindNote);
+
+        $request->validate([
+            'title' => ['required', 'max:255', 'min:2'],
+            'file' => ['mimes:jpg,jpeg,bmp,png,gif,pdf', 'max:4068']
+        ]);
+
+        $mindNote->title = $request->title;
+        if ($request->file()) {
+            $mindNote->path = $this->uploadFile($request->file);
+        }
+
+        $mindNote->update();
+
+        return redirect(route('mind_note.index'));
+    }
+
     private function uploadFile(UploadedFile $file): string
     {
         $fileName = time().'_'. $file->getClientOriginalName();

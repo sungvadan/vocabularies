@@ -44,6 +44,8 @@ Route::get('/mind-note', [MindNoteController::class, 'index'])->name('mind_note.
 Route::get('/mind-note/create', [MindNoteController::class, 'create'])->name('mind_note.create');
 Route::post('/mind-note', [MindNoteController::class, 'store'])->name('mind_note.store');
 Route::get('/mind-note/{mindNote}', [MindNoteController::class, 'show'])->name('mind_note.show');
+Route::get('/mind-note/{mindNote}/edit', [MindNoteController::class, 'edit'])->name('mind_note.edit');
+Route::put('/mind-note{mindNote}', [MindNoteController::class, 'update'])->name('mind_note.update');
 Route::delete('/mind-note/{mindNote}', [MindNoteController::class, 'destroy'])->name('mind_note.delete');
 
 Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');

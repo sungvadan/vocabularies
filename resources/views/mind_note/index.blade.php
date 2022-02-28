@@ -19,7 +19,8 @@
             <tbody>
                 @foreach($mindNotes as $mindNote)
                     <tr>
-                        <td>
+                        <td class="d-flex">
+                            <a class="btn btn-link" href="{{route('mind_note.edit', ['mindNote' => $mindNote])}}"><i class="far fa-edit"></i></a>
                             <form method="POST" action="{{ route('mind_note.delete', ['mindNote' =>$mindNote])}}">
                                 @method('DELETE')
                                 @csrf
