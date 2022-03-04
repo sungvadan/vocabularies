@@ -40,12 +40,15 @@ Route::get('/note/{note}/edit', [NoteController::class, 'edit'])->name('note.edi
 Route::put('/note/{note}', [NoteController::class, 'update'])->name('note.update');
 Route::delete('/note/{note}', [NoteController::class, 'destroy'])->name('note.delete');
 
-Route::get('/mind-note', [MindNoteController::class, 'index'])->name('mind_note.index');
-Route::get('/mind-note/create', [MindNoteController::class, 'create'])->name('mind_note.create');
-Route::post('/mind-note', [MindNoteController::class, 'store'])->name('mind_note.store');
-Route::get('/mind-note/{mindNote}', [MindNoteController::class, 'show'])->name('mind_note.show');
-Route::get('/mind-note/{mindNote}/edit', [MindNoteController::class, 'edit'])->name('mind_note.edit');
-Route::put('/mind-note{mindNote}', [MindNoteController::class, 'update'])->name('mind_note.update');
-Route::delete('/mind-note/{mindNote}', [MindNoteController::class, 'destroy'])->name('mind_note.delete');
+
+Route::controller(MindNoteController::class)->name('mind_note.')->group(function() {
+    Route::get('/mind-note', 'index')->name('index');
+    Route::get('/mind-note/create', 'create')->name('create');
+    Route::post('/mind-note', 'store')->name('store');
+    Route::get('/mind-note/{mindNote}', 'show')->name('show');
+    Route::get('/mind-note/{mindNote}/edit', 'edit')->name('edit');
+    Route::put('/mind-note{mindNote}',  'update')->name('update');
+    Route::delete('/mind-note/{mindNote}',  'destroy')->name('delete');
+});
 
 Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');
