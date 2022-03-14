@@ -1,7 +1,7 @@
 @component('mail::message')
 
 @foreach($vocabularies as $vocabulary)
-- {{ $vocabulary->word }}
+- {{ $vocabulary->word }} ({{ $vocabulary->language->language }})
 @endforeach
 <br/>
 <br/>
