@@ -14,6 +14,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Word</th>
                     <th scope="col">Definition</th>
+                    <th scope="col">Language</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                         </td>
                         <td>{{ $vocabulary->word }}</td>
                         <td>{!! nl2br(e($vocabulary->definition)) !!}</td>
+                        <td>{{ $vocabulary->language->language }}</td>
                     </tr>
                 @endforeach
             </tbody>

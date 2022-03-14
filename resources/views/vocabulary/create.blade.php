@@ -8,6 +8,17 @@
                 <label for="word" class="form-label">Word</label>
                 <input id="word" name="word" class="form-control @error('word') is-invalid @enderror" value="{{ old('word') }}">
                 @error('word')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="word" class="form-label">Language</label>
+                <select name="language_id" class="form-control @error('language_id') is-invalid @enderror" value="{{ old('language_id') }}">
+                   @foreach($languages as $language)
+                       <option value="{{ $language->id }}">{{ $language->language }}</option>
+                    @endforeach
+                </select>
+                @error('language_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
