@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/markdown.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tailwind.css')}}">
     <title>Note</title>
 </head>
 <body>
