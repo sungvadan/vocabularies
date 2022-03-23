@@ -6,6 +6,8 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\VocabularyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Str;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +54,8 @@ Route::controller(MindNoteController::class)->name('mind_note.')->group(function
 });
 
 Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');
+
+Route::post('/markdown-to-html', function () {
+    $markdown = request('markdown');
+    return Str::of($markdown)->markdown();
+});
