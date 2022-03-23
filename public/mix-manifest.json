@@ -1,8 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/markdown.js": "/js/markdown.js",
     "/js/axios.js": "/js/axios.js",
-    "/css/markdown.css": "/css/markdown.css",
     "/css/app.css": "/css/app.css",
     "/css/tailwind.css": "/css/tailwind.css"
 }
