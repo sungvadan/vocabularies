@@ -10,7 +10,7 @@ class RandomNoteService
 
     public function getRandomNoteForUser(User $user): string
     {
-        $notes = Note::where('user_id', $user->id)->orderByRaw('rand()')->limit(2)->get();
+        $notes = Note::where('user_id', $user->id)->where('learnable', true)->orderByRaw('rand()')->limit(2)->get();
         $randoms = [];
 
         foreach ($notes as $note) {

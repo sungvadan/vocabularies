@@ -20,6 +20,13 @@
                 @foreach($mindNotes as $mindNote)
                     <tr>
                         <td class="d-flex">
+                            <a class="btn btn-link" href="{{route('mind_note.learnable', ['mindNote' => $mindNote])}}">
+                                @if($mindNote->learnable)
+                                    <i class="fas fa-eye"></i>
+                                @else
+                                    <i class="fas fa-eye-slash"></i>
+                                @endif
+                            </a>
                             <a class="btn btn-link" href="{{route('mind_note.edit', ['mindNote' => $mindNote])}}"><i class="far fa-edit"></i></a>
                             <form method="POST" action="{{ route('mind_note.delete', ['mindNote' =>$mindNote])}}">
                                 @method('DELETE')

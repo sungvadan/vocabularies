@@ -41,6 +41,7 @@ Route::get('/note/{note}', [NoteController::class, 'show'])->name('note.show');
 Route::get('/note/{note}/edit', [NoteController::class, 'edit'])->name('note.edit');
 Route::put('/note/{note}', [NoteController::class, 'update'])->name('note.update');
 Route::delete('/note/{note}', [NoteController::class, 'destroy'])->name('note.delete');
+Route::get('/note/{note}/learnable', [NoteController::class, 'learnable'])->name('note.learnable');
 
 
 Route::controller(MindNoteController::class)->name('mind_note.')->group(function() {
@@ -51,6 +52,7 @@ Route::controller(MindNoteController::class)->name('mind_note.')->group(function
     Route::get('/mind-note/{mindNote}/edit', 'edit')->name('edit');
     Route::put('/mind-note{mindNote}',  'update')->name('update');
     Route::delete('/mind-note/{mindNote}',  'destroy')->name('delete');
+    Route::get('/mind-note/{mindNote}/learnable', 'learnable')->name('learnable');
 });
 
 Route::get('/image/{path}', [ImageController::class, 'index'])->name('image');
