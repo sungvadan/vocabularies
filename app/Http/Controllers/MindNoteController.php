@@ -92,4 +92,13 @@ class MindNoteController extends Controller
 
         return '/storage/' . $filePath;
     }
+
+    public function learnable(MindNote $mindNote)
+    {
+        $this->authorize('update', $mindNote);
+        $mindNote->learnable = !$mindNote->learnable;
+        $mindNote->save();
+
+        return redirect(route('mind_note.index'));
+    }
 }

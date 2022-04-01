@@ -80,6 +80,17 @@ class NoteController extends Controller
         return redirect(route('note.index'));
     }
 
+    public function learnable(Note $note)
+    {
+        $this->authorize('update', $note);
+
+        $note->update([
+            'learnable' => !$note->learnable
+        ]);
+
+        return redirect(route('note.index'));
+    }
+
     public function random(RandomNoteService $randomNoteService)
     {
         $user = Auth::user();

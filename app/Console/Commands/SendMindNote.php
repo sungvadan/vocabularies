@@ -43,7 +43,7 @@ class SendMindNote extends Command
     {
         $email = $this->argument('email');
         $user = User::where('email', $email)->firstOrFail();
-        $vocabularies = MindNote::where('user_id', '=', $user->id)->orderByRaw('rand()')->limit(1)->firstOrFail();
+        $vocabularies = MindNote::where('user_id', '=', $user->id)->where('learnable', true)->orderByRaw('rand()')->limit(1)->firstOrFail();
         Mail::to($email)->send(new RandomMindNote($vocabularies));
     }
 }
