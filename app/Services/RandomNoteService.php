@@ -16,20 +16,9 @@ class RandomNoteService
         foreach ($notes as $note) {
             $matches = explode('___', $note->body);
             $randoms[] = "# $note->title";
-            if (count($matches) <= 2) {
-                $randoms = array_merge($randoms ,$matches);
-            } else {
-                $chunk = [];
-                while(count($chunk) < 2) {
-                    $randomIndex = random_int(0 , count($matches) - 1);
-                    if (!in_array($randomIndex, $chunk)) {
-                        $chunk[] = $randomIndex;
-                    }
-                }
-
-                foreach ($chunk as $index) {
-                    $randoms[] = $matches[$index];
-                }
+            $randomKeys = (array) array_rand($matches, min(2, count($matches)));
+            foreach ($randomKeys as $key) {
+                $randoms[] = $matches[$key];
             }
         }
 
