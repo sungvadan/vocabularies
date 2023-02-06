@@ -33,7 +33,7 @@ class MindNoteController extends Controller
         $user = Auth::user();
         $request->validate([
             'title' => ['required', 'max:255', 'min:2'],
-            'file' => ['required', 'mimes:jpg,jpeg,bmp,png,gif,pdf', 'max:4068']
+            'file' => ['required', 'mimes:jpg,jpeg,bmp,png,gif,pdf,svg', 'max:4068']
         ]);
 
         $mindNote = new MindNote;
