@@ -6,6 +6,7 @@ use App\Models\MindNote;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MindNoteController extends Controller
 {
@@ -49,7 +50,10 @@ class MindNoteController extends Controller
     {
         $this->authorize('view', $mindNote);
 
-        return view('mind_note.show', ['mindNote' => $mindNote]);
+        return view('mind_note.show', [
+            'mindNote' => $mindNote,
+            'isPdf' => stripos(Storage::disk('public')->mimeType($mindNote->path), 'pdf')
+        ]);
     }
 
     public function destroy(MindNote $mindNote)
@@ -90,7 +94,7 @@ class MindNoteController extends Controller
         $fileName = time().'_'. $file->getClientOriginalName();
         $filePath = $file->storeAs('uploads', $fileName, 'public');
 
-        return '/storage/' . $filePath;
+        return $filePath;
     }
 
     public function learnable(MindNote $mindNote)
