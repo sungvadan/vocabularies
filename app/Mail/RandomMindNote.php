@@ -3,11 +3,10 @@
 namespace App\Mail;
 
 use App\Models\MindNote;
-use App\Models\Vocabulary;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class RandomMindNote extends Mailable
 {
@@ -31,7 +30,11 @@ class RandomMindNote extends Mailable
      */
     public function build()
     {
-        return $this->from(config('mail.from.address'))
-            ->view('email.mind-note.random');
+        return $this
+            ->from(config('mail.from.address'))
+            ->view('email.mind-note.random', [
+                'isPdf' => stripos(Storage::disk('public')->mimeType($this->mindNote->path), 'pdf')
+            ])
+            ->attachFromStorageDisk('public', $this->mindNote->path);
     }
 }

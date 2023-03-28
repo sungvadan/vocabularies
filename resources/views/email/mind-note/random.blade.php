@@ -7,6 +7,8 @@
 <body>
 <h1>{{ $mindNote->title }}</h1>
 
-<img src="{{ $message->embed(public_path($mindNote->path)) }}">
+@if (!$isPdf)
+    <img src="{{ $message->embed(public_path('storage/'.$mindNote->path)) }}">
+@endif
 </body>
 </html>
