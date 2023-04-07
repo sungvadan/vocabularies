@@ -14,6 +14,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Word</th>
                     <th scope="col">Definition</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Language</th>
                 </tr>
             </thead>
@@ -30,6 +31,11 @@
                         </td>
                         <td>{{ $vocabulary->word }}</td>
                         <td>{!! nl2br(e($vocabulary->definition)) !!}</td>
+                        <td>
+                            @if (!empty($vocabulary->image_path))
+                                <img style="width: 200px;" src="{{ asset('storage/'.$vocabulary->image_path) }}">
+                            @endif
+                        </td>
                         <td>{{ $vocabulary->language->language }}</td>
                     </tr>
                 @endforeach

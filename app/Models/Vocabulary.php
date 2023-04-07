@@ -11,7 +11,13 @@ class Vocabulary extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['word', 'definition', 'user_id', 'language_id'];
+    protected $fillable = [
+        'word',
+        'definition',
+        'user_id',
+        'language_id',
+        'image_path',
+    ];
 
     protected $with = ['language'];
 

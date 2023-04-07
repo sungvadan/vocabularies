@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form method="POST" action="{{ route('vocabulary.store') }}">
+        <form method="POST" action="{{ route('vocabulary.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="word" class="form-label">Word</label>
@@ -20,6 +20,13 @@
                 </select>
                 @error('language_id')
                     <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="file">Image</label>
+                <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" name="file">
+                @error('file')
+                <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
