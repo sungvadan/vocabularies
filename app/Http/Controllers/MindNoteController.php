@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\MindNote;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class MindNoteController extends Controller
 {
+    use UploadFileTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -87,14 +88,6 @@ class MindNoteController extends Controller
         $mindNote->update();
 
         return redirect(route('mind_note.index'));
-    }
-
-    private function uploadFile(UploadedFile $file): string
-    {
-        $fileName = time().'_'. $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-        return $filePath;
     }
 
     public function learnable(MindNote $mindNote)

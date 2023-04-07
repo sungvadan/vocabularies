@@ -25,6 +25,13 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="file">Image</label>
+                <input type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" name="file">
+                @error('file')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="definition">Definition</label>
                 <textarea name="definition" id="definition" rows="10" class="form-control @error('definition') is-invalid @enderror">{{ old('definition') ?? $vocabulary->definition }}</textarea>
                 @error('definition')

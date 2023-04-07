@@ -10,6 +10,12 @@
                 <p id="js-loading-result">Result in <span>5</span></p>
                 <p class="d-none" id="js-definition">
                     {{$vocabulary->definition}}
+                    <br/>
+                    <br/>
+                    <br/>
+                    @if ($vocabulary->image_path)
+                        <img class="w-50" src="{{ asset('storage/'.$vocabulary->image_path) }}">
+                    @endif
                 </p>
             </div>
             <div class="card-footer text-muted">

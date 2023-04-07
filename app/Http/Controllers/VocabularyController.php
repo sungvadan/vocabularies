@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Language;
 use App\Models\Vocabulary;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 
 class VocabularyController extends Controller
 {
+    use UploadFileTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,10 +39,15 @@ class VocabularyController extends Controller
         $payload = $request->validate([
             'word' => ['required', 'max:255', 'min:2'],
             'definition' => ['required', 'min:2'],
-            'language_id' => ['required']
+            'language_id' => ['required'],
+            'file' => ['mimes:jpg,jpeg,bmp,png,gif,pdf,svg', 'max:4068'],
         ]);
 
         $payload['user_id'] = $user->id;
+
+        if ($request->file) {
+            $payload['image_path'] = $this->uploadFile($request->file);
+        }
 
         Vocabulary::create($payload);
 
