@@ -50,7 +50,7 @@
             window.onbeforeunload = () => {
                 let title = document.querySelector('#title').value 
                 let body = document.querySelector('#body').value 
-                if (initTitle !== title || body !== body)
+                if (initTitle !== title || initBody !== body)
                   return "Did you save your stuff?"
             }
 
