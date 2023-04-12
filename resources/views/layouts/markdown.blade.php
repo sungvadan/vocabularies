@@ -64,5 +64,7 @@
 @stop
 
 @yield('javascript-section')
+
+@yield('javascript')
 </body>
 </html>
