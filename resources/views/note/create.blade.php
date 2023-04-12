@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('note.store') }}">
+    <form method="POST" id="form-note" action="{{ route('note.store') }}">
         @csrf
         <div class="flex items-center mb-2">
             <div class="w-1/4">
@@ -40,3 +40,24 @@
     </form>
 
 @endsection
+
+@section('javascript')
+    <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const initTitle = document.querySelector('#title').value
+            const initBody = document.querySelector('#body').value
+
+            window.onbeforeunload = () => {
+                let title = document.querySelector('#title').value 
+                let body = document.querySelector('#body').value 
+                if (initTitle !== title || body !== body)
+                  return "Did you save your stuff?"
+            }
+
+            document.querySelector('#form-note').addEventListener('submit', () => {
+                window.onbeforeunload = null
+            })
+        });
+    </script>
+@endsection
+
