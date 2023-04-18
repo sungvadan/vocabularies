@@ -23,7 +23,20 @@
                 width: 100% !important;
             }
         }
+        .hidden_definition {
+             display: none;
+         }
     </style>
+    <script>
+      function toggleVisibilityDefinition(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('hidden_definition')) {
+          element.classList.remove('hidden_definition');
+        } else {
+          element.classList.add('hidden_definition');
+        }
+      }
+    </script>
 </head>
 
 <body
@@ -60,76 +73,36 @@
                                         <ul style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.4; text-align: left;">
                                             @foreach($vocabularies as $vocabulary)
                                                 <li style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                     {{ $vocabulary->word }} ({{ $vocabulary->language->language }})
+                                                    <span onclick="toggleVisibilityDefinition('definition{{$loop->index}}')">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</span>
+
+                                                    <table class="panel hidden_definition" width="100%" cellpadding="0" cellspacing="0"
+                                                        id="definition{{$loop->index}}"
+                                                        role="presentation"
+                                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-left: #2d3748 solid 4px; margin: 21px 0;">
+                                                        <tr>
+                                                            <td class="panel-content"
+                                                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; background-color: #edf2f7; color: #718096; padding: 16px;">
+                                                                <table width="100%" cellpadding="0" cellspacing="0"
+                                                                    role="presentation"
+                                                                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+                                                                    <tr>
+                                                                        <td class="panel-item"
+                                                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 0;">
+                                                                            <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left; color: #718096; margin-bottom: 0; padding-bottom: 0;">
+                                                                                {!! nl2br(e($vocabulary->definition)) !!}
+                                                                            </p>
+                                                                            @if ($vocabulary->image_path)
+                                                                                    <img style="max-width: 30vw"src="{{ $message->embed(public_path('storage/'.$vocabulary->image_path)) }}">
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </li>
                                             @endforeach
                                         </ul>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-
-                                        @foreach($vocabularies as $vocabulary)
-                                            {{ $vocabulary->word }}
-
-                                            <table class="panel" width="100%" cellpadding="0" cellspacing="0"
-                                                role="presentation"
-                                                style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-left: #2d3748 solid 4px; margin: 21px 0;">
-                                                <tr>
-                                                    <td class="panel-content"
-                                                        style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; background-color: #edf2f7; color: #718096; padding: 16px;">
-                                                        <table width="100%" cellpadding="0" cellspacing="0"
-                                                            role="presentation"
-                                                            style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                            <tr>
-                                                                <td class="panel-item"
-                                                                    style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; padding: 0;">
-                                                                    <p style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left; color: #718096; margin-bottom: 0; padding-bottom: 0;">
-                                                                        {!! nl2br(e($vocabulary->definition)) !!}
-                                                                    </p>
-                                                                    @if ($vocabulary->image_path)
-                                                                            <img style="max-width: 30vw"src="{{ $message->embed(public_path('storage/'.$vocabulary->image_path)) }}">
-                                                                    @endif
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <br>
-                                            <br>
-                                        @endforeach
                                     </td>
                                 </tr>
                             </table>
