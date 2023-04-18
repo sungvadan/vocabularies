@@ -24,25 +24,21 @@
             }
         }
 
-        .more-info-checkbox {
-            display: none;
-        }
-          
-          /* Style the label for the checkbox */
-          .more-info-label {
-            cursor: pointer;
-          }
-          
-          /* Hide the content initially */
-          .more-info-content {
+        @foreach($vocabularies as $vocabulary)
+                  /* Hide the content initially */
+        #more-info-content{{$loop->index}} {
             display: none;
           }
           
-          /* Show the content when the checkbox is checked */
-          .more-info-checkbox:checked + .more-info-label + .more-info-content {
+          /* Show the content when the URL contains "#more-info" */
+          #more-info-content{{$loop->index}}:target {
             display: block;
-          }    
-    </style>
+          }
+
+        @endforeach
+
+
+       </style>
 </head>
 
 <body
@@ -79,11 +75,10 @@
                                         <ul style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.4; text-align: left;">
                                             @foreach($vocabularies as $vocabulary)
                                                 <li style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                    <input type="checkbox" class="more-info-checkbox" id="checkbox-word-{{$loop->index}}">
-                                                    <label for="checkbox-word-{{$loop->index}}" class="more-info-label">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</label>
+                                                    <a href="#more-info{{$loop->index}}">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</a>
 
                                                     <table class="panel more-info-content" width="100%" cellpadding="0" cellspacing="0"
-                                                        id="definition{{$loop->index}}"
+                                                        id="more-info-content{{$loop->index}}"
                                                         role="presentation"
                                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-left: #2d3748 solid 4px; margin: 21px 0;">
                                                         <tr>
