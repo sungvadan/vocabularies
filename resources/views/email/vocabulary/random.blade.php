@@ -26,12 +26,12 @@
 
         @foreach($vocabularies as $vocabulary)
                   /* Hide the content initially */
-        #more-info-content{{$loop->index}} {
+        #more-info{{$loop->index}} {
             display: none;
           }
           
           /* Show the content when the URL contains "#more-info" */
-          #more-info-content{{$loop->index}}:target {
+          #more-info{{$loop->index}}:target {
             display: block;
           }
 
@@ -77,8 +77,8 @@
                                                 <li style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
                                                     <a href="#more-info{{$loop->index}}">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</a>
 
-                                                    <table class="panel more-info-content" width="100%" cellpadding="0" cellspacing="0"
-                                                        id="more-info-content{{$loop->index}}"
+                                                    <table class="panel" width="100%" cellpadding="0" cellspacing="0"
+                                                        id="more-info{{$loop->index}}"
                                                         role="presentation"
                                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-left: #2d3748 solid 4px; margin: 21px 0;">
                                                         <tr>
