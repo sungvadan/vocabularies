@@ -23,20 +23,26 @@
                 width: 100% !important;
             }
         }
-        .hidden_definition {
-             display: none;
-         }
-    </style>
-    <script>
-      function toggleVisibilityDefinition(id) {
-        var element = document.getElementById(id);
-        if (element.classList.contains('hidden_definition')) {
-          element.classList.remove('hidden_definition');
-        } else {
-          element.classList.add('hidden_definition');
+
+        .more-info-checkbox {
+            display: none;
         }
-      }
-    </script>
+          
+          /* Style the label for the checkbox */
+          .more-info-label {
+            cursor: pointer;
+          }
+          
+          /* Hide the content initially */
+          .more-info-content {
+            display: none;
+          }
+          
+          /* Show the content when the checkbox is checked */
+          .more-info-checkbox:checked + .more-info-label + .more-info-content {
+            display: block;
+          }    
+    </style>
 </head>
 
 <body
@@ -73,9 +79,10 @@
                                         <ul style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; line-height: 1.4; text-align: left;">
                                             @foreach($vocabularies as $vocabulary)
                                                 <li style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
-                                                    <span onclick="toggleVisibilityDefinition('definition{{$loop->index}}')">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</span>
+                                                    <input type="checkbox" class="more-info-checkbox" id="checkbox-word-{{$loop->index}}">
+                                                    <label for="checkbox-word-{{$loop->index}}" class="more-info-label">{{ $vocabulary->word }} ({{ $vocabulary->language->language }})</label>
 
-                                                    <table class="panel hidden_definition" width="100%" cellpadding="0" cellspacing="0"
+                                                    <table class="panel more-info-content" width="100%" cellpadding="0" cellspacing="0"
                                                         id="definition{{$loop->index}}"
                                                         role="presentation"
                                                         style="box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-left: #2d3748 solid 4px; margin: 21px 0;">
